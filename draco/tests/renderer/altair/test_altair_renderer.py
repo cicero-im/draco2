@@ -1,4 +1,3 @@
-import random
 from typing import Literal
 
 import pandas as pd
@@ -7,15 +6,15 @@ from deepdiff import DeepDiff
 
 from draco.renderer import AltairRenderer
 from draco.renderer.altair.types import MarkType
+import secrets
 
 NUM_ROWS = 100
 df = pd.DataFrame(
     {
-        "temperature": [random.uniform(1, 44) for _ in range(NUM_ROWS)],
-        "wind": [random.uniform(0, 100) for _ in range(NUM_ROWS)],
-        "precipitation": [random.uniform(0, 100) for _ in range(NUM_ROWS)],
-        "condition": random.choices(
-            ["drizzle", "fog", "rain", "sun", "snow"], k=NUM_ROWS
+        "temperature": [secrets.SystemRandom().uniform(1, 44) for _ in range(NUM_ROWS)],
+        "wind": [secrets.SystemRandom().uniform(0, 100) for _ in range(NUM_ROWS)],
+        "precipitation": [secrets.SystemRandom().uniform(0, 100) for _ in range(NUM_ROWS)],
+        "condition": secrets.SystemRandom().choices(["drizzle", "fog", "rain", "sun", "snow"], k=NUM_ROWS
         ),
     }
 )
